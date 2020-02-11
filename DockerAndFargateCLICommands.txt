@@ -1,0 +1,11 @@
+eval $(aws ecr get-login --no-include-email)
+
+docker tag aedf47d433f1 611825264259.dkr.ecr.eu-central-1.amazonaws.com/codedays
+docker push 611825264259.dkr.ecr.eu-central-1.amazonaws.com/codedays
+
+
+
+
+export AWS_REGION=eu-central-1
+
+fargatecli task run web --image nginx:latest --security-group-id sg-04da644e10845902a --subnet-id subnet-816f80cd -v
